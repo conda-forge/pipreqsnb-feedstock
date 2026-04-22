@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pipreqsnb-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pipreqsnb-{{ version }}.tar.gz
   sha256: ca4306d526ea3ec3cc4fdcf753cae3eaa359b626a4f88ef267badce4bf2efc10
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - pipreqsnb=pipreqsnb.pipreqsnb:main
@@ -20,9 +20,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - pipreqs
 
 test:
@@ -33,6 +33,7 @@ test:
     - pipreqsnb --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/ivanlen/pipreqsnb
